@@ -1,0 +1,28 @@
+# Day 13 & 14 - Users and Groups
+
+- you can use `grep GID /etc/login.defs` to see the ID values for normal groups and system groups
+- System Groups will have a value between 100-999
+- Normal Groups will have a value between 1000 - 60000
+- You can use this to identify which group is which
+- you can use `getent group {1000..60000}` to view the normal groups
+- you can add groups using `sudo groupadd groupname`
+- to modify group you can use `groupmod` 
+- e.g. `sudo groupmod -n newname currentname` to change name
+- to delete group use `groupdel`
+- ^ All the above also applies to users
+- `sudo adduser username` to add user
+- this is better than using `useradd` because it gives you more permissions that you may need
+- to change a users password use `sudo passwd < users name whos password you want to change >`
+- to delete user `sudo userdel`
+- Use `sudo su username` to switch users
+- `exit` to exit user
+- you should see in your home directory, every user gets its own folder
+- `- rwx rwx rwx` the first 3 denote the permissions for the user, followed by group, and then others
+- stand for read, write, execute permissions
+- `umask -S` to check permissions, the -S is for symbolic notation
+- using umask without the -S will show you the octal notation e.g. `0002`
+- the first number is directory, the next 3 are for permissions like users, groups, others
+- when switching to another user you created and trying to create files, you may get a warning saying user is not in sudoers file
+- To access the file use `sudo visudo`
+- In this file, you can enter a users name under root privileges to give them root permissions
+- 
