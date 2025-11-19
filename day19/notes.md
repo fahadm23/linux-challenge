@@ -1,0 +1,21 @@
+# Day 19 - Inodes, symlinks, and other shortcuts
+
+- The linux virtual system VFS is a layer of linux
+- The inode is the file layer between the filename and files actual data on the disk
+- it can be viewing using `-i` and `stat`
+- every file name points to an inode which points to the actual data on the disk
+- hard links and symbolic (soft) links
+- hard links only link to a file, not a directory
+- soft links can link to directories
+- if there is a long path to a file, you can link that to a shortcut path using a file
+- inode stands for index node, describes file system object, inof, structure of the file
+- when you use `touch` you are basically creating an inode for a file that doesn't exist yet
+- to create a soft link us `ln -s filename softlinkname` 
+- `ln` stands for link `-s` for soft link, followed by the name of the file you want to create a shortcut for, followed by shorcutname
+- if you go into `stat` for the shortcut name you will see it says symbolic link
+- a hard link does not create a different inode, it references the original inode directly
+- to create hard link use `ln filename hardlinkname`
+- a hard link, if original file is deleted will still have the same inode and the data block
+- a soft link, will be referencing that no long exists if the original is deleted
+- `alias` is is a shorcut, can be used fort a long command or something used often
+- you can create an alias using `alias` command e.g. `alias moo="cowsay moo"`
